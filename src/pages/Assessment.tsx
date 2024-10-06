@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Main from "@/layouts/Main";
 import submitAssessment from "@/api/assesment";
@@ -19,9 +19,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
-import { UserState } from "@/interface";
+import { UserState, Assessment as Assess } from "@/interface";
 import useAssessmentStore from "@/store/assessment";
 import { useNavigate } from "react-router-dom";
+import { getAssessmentsByStudentId } from "@/api/getAllAssessments";
+import AssessmentCards from "@/componenets/AssessmentCards";
 const questions = [
   "Little interest or pleasure in doing things?",
   "Feeling down, depressed, or hopeless?",
@@ -52,7 +54,9 @@ const Assessment = () => {
     setAnswers(updatedAnswers);
   };
 
-  const navigate = useNavigate()
+  const [assessments, setAssessments] = useState<Assess[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
   const auth = useAuthUser<UserState>();
   const setStoreAssessmentId = useAssessmentStore(
     (state) => state.setAssessmentId
@@ -70,10 +74,10 @@ const Assessment = () => {
         `Severity: ${response.severity}. Suggested Plan: ${response.suggestedPlan}`
       );
       setAssessmentId(response.assessmentId);
-      setStoreAssessmentId(response.assessmentId)
-      setStoreActivities(response.activities)
-      console.log(response.activities)
-      navigate("/dashboard")
+      setStoreAssessmentId(response.assessmentId);
+      setStoreActivities(response.activities);
+      console.log(response.activities);
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error submitting assessment:", error);
     } finally {
@@ -81,55 +85,90 @@ const Assessment = () => {
     }
   };
 
+  const fetchAssessments = async () => {
+    try {
+      const data = await getAssessmentsByStudentId(auth?.userId || "  ");
+      setAssessments(data);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load assessments");
+      setLoading(false);
+    }
+  };
+
+  useEffect(()=>{
+     fetchAssessments()
+  },[])
+
   return (
     <Main>
-      <Card className="w-full max-w-2xl mx-auto">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">
-            PHQ-9 Assessment
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 ">
-          {questions.map((question, index) => (
-            <div key={index} className="space-y-2 row-span-1">
-              <Label
-                htmlFor={`question-${index}`}
-                className="text-sm font-medium"
-              >
-                {question}
-              </Label>
-              <Select
-                value={answers[index].toString()}
-                onValueChange={(value) => handleChange(index, parseInt(value))}
-              >
-                <SelectTrigger id={`question-${index}`} className="w-full">
-                  <SelectValue placeholder="Select an option" />
-                </SelectTrigger>
-                <SelectContent>
-                  {options.map((option) => (
-                    <SelectItem
-                      key={option.value}
-                      value={option.value.toString()}
-                    >
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          ))}
-        </CardContent>
-        <CardFooter className="flex flex-col items-center space-y-4">
-          <Button onClick={handleSubmit} disabled={loading} className="w-full">
-            {loading ? "Submitting..." : "Submit"}
-          </Button>
-          {result && (
-            <p className="text-center text-sm font-medium text-primary">
-              {result}
-            </p>
-          )}
-        </CardFooter>
-      </Card>
+      <div className=" w-full grid  grid-cols-3">
+        <Card className=" max-w-2xl mx-auto col-span-2">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center">
+              PHQ-9 Assessment
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 ">
+            {questions.map((question, index) => (
+              <div key={index} className="space-y-2 row-span-1">
+                <Label
+                  htmlFor={`question-${index}`}
+                  className="text-sm font-medium"
+                >
+                  {question}
+                </Label>
+                <Select
+                  value={answers[index].toString()}
+                  onValueChange={(value) =>
+                    handleChange(index, parseInt(value))
+                  }
+                >
+                  <SelectTrigger id={`question-${index}`} className="w-full">
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {options.map((option) => (
+                      <SelectItem
+                        key={option.value}
+                        value={option.value.toString()}
+                      >
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            ))}
+          </CardContent>
+          <CardFooter className="flex flex-col items-center space-y-4">
+            <Button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="w-full"
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </Button>
+            {result && (
+              <p className="text-center text-sm font-medium text-primary">
+                {result}
+              </p>
+            )}
+          </CardFooter>
+        </Card>
+        <div className=" col-span-1 border rounded-md p-4">
+          <div>
+            <h3 className=" text-xl font-semibold">Assessments History</h3>
+            {/* {assessments.map((assessment) => (
+              <div key={assessment._id}>
+                <p>Severity: {assessment.severity}</p>
+                <p>Score: {assessment.totalScore}</p>
+              </div>
+            ))} */}
+            <AssessmentCards assessments={assessments}/>
+          </div>
+        </div>
+      </div>
     </Main>
   );
 };

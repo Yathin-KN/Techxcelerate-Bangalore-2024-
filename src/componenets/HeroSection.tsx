@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -9,7 +8,7 @@ import { MessageSquare, BookOpen, BarChart } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-16  bg-transparent">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">

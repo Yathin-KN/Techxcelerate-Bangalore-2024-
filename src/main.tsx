@@ -10,12 +10,13 @@ import createStore from "react-auth-kit/createStore";
 import Assessment from "./pages/Assessment";
 import { Dashboard } from "./pages/Dashboard";
 import Todo from "./pages/Todo";
+import Blogs from "./pages/Blogs";
 
 const store = createStore({
   authName: "_auth",
   authType: "cookie",
   cookieDomain: window.location.hostname,
-  cookieSecure : false
+  cookieSecure: false,
 });
 
 const router = createBrowserRouter([
@@ -32,15 +33,21 @@ const router = createBrowserRouter([
     element: <SignInPage />,
   },
   {
-    path:"/assessment",
-    element : <Assessment/>
-  },{
-    path : '/dashboard',
-    element : <Dashboard/>
-  },{
-    path:'/todo',
-    element : <Todo/>
-  }
+    path: "/assessment",
+    element: <Assessment />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "/todo",
+    element: <Todo />,
+  },
+  {
+    path: "/blogs",
+    element: <Blogs />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(

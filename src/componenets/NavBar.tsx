@@ -8,7 +8,6 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  
   return (
     <nav className="sticky top-0 z-50 bg-white bg-opacity-80 backdrop-blur-md px-4">
       <div className="mx-auto">
@@ -17,7 +16,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               {/* Placeholder for logo */}
               <Link to={"/"}>
-              <div className="h-8  w-8 bg-gray-300 rounded-full"></div>
+                <div className="h-8  w-8 bg-gray-300 rounded-full"></div>
               </Link>
             </div>
             <div className="hidden md:block">
@@ -35,25 +34,31 @@ export default function Navbar() {
                   Dashboard
                 </Link>
                 <Link
-                  to="/pricing"
+                  to="https://0p6x3tk5-5000.inc1.devtunnels.ms/"
                   className="text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   AI Chatbot
                 </Link>
                 <Link
-                  to="/todo"
+                  to="https://0p6x3tk5-3000.inc1.devtunnels.ms/"
                   className="text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Todo
+                  Blogs
                 </Link>
               </div>
             </div>
           </div>
           <div className="hidden md:block">
-            <Link  to="/signup" className="border text-gray-800 px-4 py-2 rounded-md text-sm font-medium mr-2">
+            <Link
+              to="/signup"
+              className="border text-gray-800 px-4 py-2 rounded-md text-sm font-medium mr-2"
+            >
               Sign Up
             </Link>
-            <Link  to="/signin" className="border text-gray-800 px-4 py-2 rounded-md text-sm font-medium mr-2">
+            <Link
+              to="/signin"
+              className="border text-white bg-gray-800 px-4 py-2 rounded-md text-sm font-medium mr-2"
+            >
               Sign In
             </Link>
           </div>
@@ -104,12 +109,18 @@ export default function Navbar() {
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200 space-y-3">
             <div className="flex items-center px-5">
-              <Link  to="/signup" className="bg-gray-800 text-center text-white px-4 py-2 rounded-md text-sm font-medium mr-2 w-full">
+              <Link
+                to="/signup"
+                className="bg-gray-800 text-center text-white px-4 py-2 rounded-md text-sm font-medium mr-2 w-full"
+              >
                 Get started
               </Link>
             </div>
             <div className="flex items-center px-5">
-              <Link  to="/signup" className="text-gray-800 text-center bg-white border border-gray-950 px-4 py-2 rounded-md text-sm font-medium mr-2 w-full">
+              <Link
+                to="/signup"
+                className="text-gray-800 text-center bg-white border border-gray-950 px-4 py-2 rounded-md text-sm font-medium mr-2 w-full"
+              >
                 Jobs portal
               </Link>
             </div>
