@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb+srv://yathin:fGcbXcDWtoUxfMO5@cluster0.hkiip.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+client = MongoClient('USE your API key')
 db = client['mental_wellness']
 blogs_collection = db['blogs']
 
