@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# AI-Driven Mental Well-Being Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## A Community-Centric and Gamified Support Solution for College Students
 
-Currently, two official plugins are available:
+### Key Features:
+- **Anonymous AI Chatbot Support**
+- **Regular Mental Health Assessments**
+- **Gamified Mental Health Tracking**
+- **Community Forum and Peer Support Groups**
+- **Inclusive Resource Hub**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Expected Impact:
+- Reduce anxiety and depression symptoms across diverse student groups.
+- Improve academic performance and mental resilience in students.
+- Increase student engagement in mental health support, focusing on inclusivity and acceptance.
+- Foster a supportive community that encourages open dialogue on mental and sexual health.
 
-## Expanding the ESLint configuration
+### Future Scope:
+- Advanced AI Personalization
+- Teletherapy and Professional Support Integration
+- Enhanced Gamification Elements
+- Mood and Behavior Tracking
+- Community-Building Features
+- Resource Expansion
+- Strategic Partnerships with Institutions and Corporations
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Tech Stack
+- **Frontend**: React, TypeScript
+- **Backend**: Flask, MongoDB
+- **ML**: Keras, TensorFlow, Matplotlib, NumPy, Pandas
+- **LLMs**: MentalLLaMA, Gemini AI
 
-- Configure the top-level `parserOptions` property like this:
+### Project Architecture
+![Architecture](path_to_architecture_image)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Screenshots
+#### Sign-In Page
+![Sign-In Page](path_to_signin_image)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Sign-Up Page
+![Sign-Up Page](path_to_signup_image)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### Main Page
+![Main Page](path_to_main_image)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### Assessments
+![Assessments](path_to_assessments_image)
+
+#### Dashboard
+![Dashboard](path_to_dashboard_image)
+
+#### Chatbot
+![Chatbot](path_to_chatbot_image)
+
+#### Blogs
+![Blogs](path_to_blogs_image)
+
+### Getting Started
+To run this project locally, follow these steps:
+1. Clone the repository.
+   ```bash
+   git clone https://github.com/Yathin-KN/Techxcelerate-Bangalore-2024.git
