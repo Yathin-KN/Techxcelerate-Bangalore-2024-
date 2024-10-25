@@ -31,29 +31,29 @@
 - **LLMs**: MentalLLaMA, Gemini AI
 
 ### Project Architecture
-![Architecture](path_to_architecture_image)
+![Architecture](app_images/architecture.png)
 
 ### Screenshots
 #### Sign-In Page
-![Sign-In Page](path_to_signin_image)
+![Sign-In Page](app_images/signin.jpeg)
 
 #### Sign-Up Page
-![Sign-Up Page](path_to_signup_image)
+![Sign-Up Page](app_images/signup.jpeg)
 
 #### Main Page
-![Main Page](path_to_main_image)
+![Main Page](app_images/mainpage.jpeg)
 
 #### Assessments
-![Assessments](path_to_assessments_image)
+![Assessments](app_images/assesment.jpeg)
 
 #### Dashboard
-![Dashboard](path_to_dashboard_image)
+![Dashboard](app_images/dashboard.jpeg)
 
 #### Chatbot
-![Chatbot](path_to_chatbot_image)
+![Chatbot](app_images/chat.jpeg)
 
 #### Blogs
-![Blogs](path_to_blogs_image)
+![Blogs](app_images/blogs.jpeg)
 
 ### Getting Started
 To run this project locally, follow these steps:
